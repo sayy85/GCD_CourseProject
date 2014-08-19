@@ -44,7 +44,9 @@ run_analysis<-function(){
   #rm(df_train,df_test)
   
   #extract mean and sd
-  sub_index<-grepl('mean',colnames(df)) | grepl('std',colnames(df))
+  sub_index1<-grepl('mean',colnames(df)) | grepl('std',colnames(df))
+  sub_index2<-grepl('meanFreq()',colnames(df))
+  sub_index=as.logical(sub_index1-sub_index2)
   sub_index[1:2]=TRUE
   df<-df[,sub_index]
   
